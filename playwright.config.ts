@@ -15,7 +15,13 @@ export default defineConfig({
 
   projects: [
     {
-      name: "chromium",
+      name: "chromium-fast-checks",
+      grep: /@fast-checks/,
+      use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "chromium-login",
+      grep: /@session/,
       use: { ...devices["Desktop Chrome"] },
     },
   ],

@@ -7,10 +7,12 @@ export interface User {
 }
 
 /**
- * Creates a User instance with values sourced from environment variables.
- * Allows partial overrides for flexibility in individual tests.
+ * Returns a test user object populated from environment variables.
+ * This helper is intended for use in tests and does **not** create a real
+ * account in the application.
+ * Partial overrides can be provided for customization.
  */
-export function createUser(overrides: Partial<User> = {}): User {
+export function getTestUser(overrides: Partial<User> = {}): User {
   return {
     email: ENV.USER_EMAIL,
     password: ENV.USER_PASSWORD,

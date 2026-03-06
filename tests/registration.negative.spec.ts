@@ -4,7 +4,15 @@ import { RegisterPage } from "../src/pages/RegisterPage";
 test.describe("Registration Negative Tests", () => {
   test(
     "should display validation errors for invalid email and short password",
-    { tag: ["@auth", "@registration", "@validation", "@negative"] },
+    {
+      tag: [
+        "@auth",
+        "@registration",
+        "@validation",
+        "@negative",
+        "@fast-checks",
+      ],
+    },
     async ({ page }) => {
       const registerPage = new RegisterPage(page);
       const invalidEmail = "not-a-valid-email";
@@ -18,12 +26,20 @@ test.describe("Registration Negative Tests", () => {
       await expect(registerPage.emailValidationError).toBeVisible();
       await expect(registerPage.passwordValidationError).toBeVisible();
       await expect(page).toHaveURL(/register\.html$/);
-    }
+    },
   );
 
   test(
     "should prevent registration with empty required fields",
-    { tag: ["@auth", "@registration", "@validation", "@negative"] },
+    {
+      tag: [
+        "@auth",
+        "@registration",
+        "@validation",
+        "@negative",
+        "@fast-checks",
+      ],
+    },
     async ({ page }) => {
       const registerPage = new RegisterPage(page);
 
@@ -32,12 +48,20 @@ test.describe("Registration Negative Tests", () => {
 
       await expect(registerPage.successMessage).not.toBeVisible();
       await expect(page).toHaveURL(/register\.html$/);
-    }
+    },
   );
 
   test(
     "should reject invalid email formats",
-    { tag: ["@auth", "@registration", "@validation", "@negative"] },
+    {
+      tag: [
+        "@auth",
+        "@registration",
+        "@validation",
+        "@negative",
+        "@fast-checks",
+      ],
+    },
     async ({ page }) => {
       const registerPage = new RegisterPage(page);
       const invalidEmails = [
@@ -56,12 +80,20 @@ test.describe("Registration Negative Tests", () => {
         await expect.soft(registerPage.emailValidationError).toBeVisible();
         await expect.soft(page).toHaveURL(/register\.html$/);
       }
-    }
+    },
   );
 
   test(
     "should reject password with less than 3 characters",
-    { tag: ["@auth", "@registration", "@validation", "@negative"] },
+    {
+      tag: [
+        "@auth",
+        "@registration",
+        "@validation",
+        "@negative",
+        "@fast-checks",
+      ],
+    },
     async ({ page }) => {
       const registerPage = new RegisterPage(page);
       const shortPasswords = ["", "a", "ab"];
@@ -75,6 +107,6 @@ test.describe("Registration Negative Tests", () => {
         await expect.soft(registerPage.successMessage).not.toBeVisible();
         await expect.soft(page).toHaveURL(/register\.html$/);
       }
-    }
+    },
   );
 });
