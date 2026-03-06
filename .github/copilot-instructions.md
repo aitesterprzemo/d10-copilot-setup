@@ -42,6 +42,12 @@ chore: update playwright to v1.40.0
 3. Keep under 50 characters
 4. Use imperative mood ("add" not "added")
 
+## Sensitive Data Handling
+
+> ⚠️ **Important:** Do **not** read or expose the `.env` file under any circumstances. Environment files may contain secrets and are intentionally excluded from the repository. All configuration should come from the project setup or secure CI/CD variables.
+>
+> For AI credential access, use `#file:.env.ai` only.
+
 ## Test Framework
 
 This project uses **Playwright Test** framework for end-to-end testing. Always review `playwright.config.ts` when creating tests to understand:
