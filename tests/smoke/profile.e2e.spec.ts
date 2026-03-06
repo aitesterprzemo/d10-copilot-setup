@@ -1,14 +1,14 @@
 import { expect, test } from "@playwright/test";
-import { getTestUser } from "../src/models/User";
-import { LoginPage } from "../src/pages/LoginPage";
-import { ProfilePage } from "../src/pages/ProfilePage";
+import { getSmokeTestUser } from "../../src/models/User";
+import { LoginPage } from "../../src/pages/LoginPage";
+import { ProfilePage } from "../../src/pages/ProfilePage";
 
 test.describe("Profile Page E2E", () => {
   test(
     "should display correct user information in profile sections after login",
-    { tag: ["@auth", "@profile", "@happy-path", "@fast-checks"] },
+    { tag: ["@auth", "@profile", "@fast-checks", "@happy-path"] },
     async ({ page }) => {
-      const user = getTestUser();
+      const user = getSmokeTestUser();
       const loginPage = new LoginPage(page);
       const profilePage = new ProfilePage(page);
 

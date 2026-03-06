@@ -1,6 +1,8 @@
 import { defineConfig, devices } from "@playwright/test";
 import { ENV } from "./src/config/env.config";
 
+const SESSION_STORAGE_STATE = "playwright/.auth/session-user.json";
+
 export default defineConfig({
   testDir: "./tests",
   timeout: 10 * 1000,
@@ -20,9 +22,19 @@ export default defineConfig({
       use: { ...devices["Desktop Chrome"] },
     },
     {
-      name: "chromium-login",
+      name: "chromium-session",
+      testMatch: /session\/.*\.spec\.ts/,
       grep: /@session/,
       use: { ...devices["Desktop Chrome"] },
+    },
+    {
+      name: "chromium-user-tests",
+      testMatch: /user-tests\/.*\.spec\.ts/,
+      dependencies: ["chromium-session"],
+      use: {
+        ...devices["Desktop Chrome"],
+        storageState: SESSION_STORAGE_STATE,
+      },
     },
   ],
 });
