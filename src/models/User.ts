@@ -6,15 +6,6 @@ export interface User {
   displayName: string;
 }
 
-function getEnvBackedTestUser(overrides: Partial<User> = {}): User {
-  return {
-    email: ENV.USER_EMAIL,
-    password: ENV.USER_PASSWORD,
-    displayName: ENV.USER_DISPLAY_NAME,
-    ...overrides,
-  };
-}
-
 /**
  * Returns a smoke test user object populated from environment variables.
  * This helper is intended for use in tests and does **not** create a real
@@ -22,7 +13,12 @@ function getEnvBackedTestUser(overrides: Partial<User> = {}): User {
  * Partial overrides can be provided for customization.
  */
 export function getSmokeTestUser(overrides: Partial<User> = {}): User {
-  return getEnvBackedTestUser(overrides);
+  return {
+    email: ENV.SMOKE_USER_EMAIL,
+    password: ENV.SMOKE_USER_PASSWORD,
+    displayName: ENV.SMOKE_USER_DISPLAY_NAME,
+    ...overrides,
+  };
 }
 
 /**
@@ -30,5 +26,10 @@ export function getSmokeTestUser(overrides: Partial<User> = {}): User {
  * This helper is intended for stateful flows that verify authenticated behavior.
  */
 export function getSessionTestUser(overrides: Partial<User> = {}): User {
-  return getEnvBackedTestUser(overrides);
+    return {
+    email: ENV.SESSION_USER_EMAIL,
+    password: ENV.SESSION_USER_PASSWORD,
+    displayName: ENV.SESSION_USER_DISPLAY_NAME,
+    ...overrides,
+  };
 }
