@@ -1,7 +1,7 @@
 import { defineConfig, devices } from "@playwright/test";
 import { ENV } from "./src/config/env.config";
 
-const SESSION_STORAGE_STATE = "playwright/.auth/session-user.json";
+export const SESSION_STORAGE_STATE = "playwright/.auth/session-user.json";
 
 export default defineConfig({
   testDir: "./tests",
