@@ -39,7 +39,7 @@ Testing strategy for Rolnopol agricultural management system based on http://loc
 
 ### 3. Farm Management
 
-- [ ] Add/edit/delete fields, animals, staff `@crud` `@farm` `@resources`
+- [x] Add/edit/delete fields, animals, staff `@crud` `@farm` `@resources`
 - [ ] Create assignments between staff and fields `@farm` `@assignments` `@business-logic`
 - [ ] Prevent operations on assigned resources `@farm` `@validation` `@edge-case`
 
@@ -80,6 +80,7 @@ Testing strategy for Rolnopol agricultural management system based on http://loc
 
 - **Smoke Tests**: 5/7 core page load tests implemented
 - **Authentication - Registration**: Positive case + 4 comprehensive negative test cases implemented
+- **Farm Management**: Create field and create animal herd tests implemented
 
 ### In Progress 🚧
 
