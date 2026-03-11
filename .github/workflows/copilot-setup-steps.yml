@@ -52,4 +52,12 @@ jobs:
         run: npx playwright install-deps chromium
 
       - name: Run Playwright tests
+        env:
+          BASE_URL: ${{ vars.BASE_URL }}
+          SESSION_USER_EMAIL: ${{ secrets.SESSION_USER_EMAIL }}
+          SESSION_USER_PASSWORD: ${{ secrets.SESSION_USER_PASSWORD }}
+          SESSION_USER_DISPLAY_NAME: ${{ vars.SESSION_USER_DISPLAY_NAME }}
+          SMOKE_USER_EMAIL: ${{ secrets.SMOKE_USER_EMAIL }}
+          SMOKE_USER_PASSWORD: ${{ secrets.SMOKE_USER_PASSWORD }}
+          SMOKE_USER_DISPLAY_NAME: ${{ vars.SMOKE_USER_DISPLAY_NAME }}
         run: npm test
