@@ -18,9 +18,12 @@ jobs:
     timeout-minutes: 10
     env:
       BASE_URL: ${{ vars.BASE_URL }}
-      USER_EMAIL: ${{ secrets.USER_EMAIL }}
-      USER_PASSWORD: ${{ secrets.USER_PASSWORD }}
-      USER_DISPLAY_NAME: ${{ vars.USER_DISPLAY_NAME }}
+      SESSION_USER_EMAIL: ${{ secrets.SESSION_USER_EMAIL }}
+      SESSION_USER_PASSWORD: ${{ secrets.SESSION_USER_PASSWORD }}
+      SESSION_USER_DISPLAY_NAME: ${{ vars.SESSION_USER_DISPLAY_NAME }}
+      SMOKE_USER_EMAIL: ${{ secrets.SMOKE_USER_EMAIL }}
+      SMOKE_USER_PASSWORD: ${{ secrets.SMOKE_USER_PASSWORD }}
+      SMOKE_USER_DISPLAY_NAME: ${{ vars.SMOKE_USER_DISPLAY_NAME }}
     services:
       rolnopol:
         image: jaktestowac/rolnopol:latest

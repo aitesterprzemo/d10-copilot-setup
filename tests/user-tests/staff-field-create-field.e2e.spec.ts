@@ -25,7 +25,9 @@ test.describe("Staff & Fields - Logged User", () => {
 
       await staffFieldsMainPage.searchField(fieldName);
       await expect(staffFieldsMainPage.fieldsList).toContainText(fieldName);
-      await expect(staffFieldsMainPage.fieldsList).toContainText(`${fieldArea} ha`);
+      await expect(staffFieldsMainPage.fieldsList).toContainText(
+        `${fieldArea} ha`,
+      );
     },
   );
 });
