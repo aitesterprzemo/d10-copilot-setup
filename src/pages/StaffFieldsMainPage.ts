@@ -12,13 +12,6 @@ export class StaffFieldsMainPage extends BasePage {
   readonly addFieldSubmitBtn: Locator;
   readonly fieldsSearchInput: Locator;
   readonly fieldsList: Locator;
-  readonly openAddHerdModalBtn: Locator;
-  readonly addHerdForm: Locator;
-  readonly herdNameInput: Locator;
-  readonly herdCountInput: Locator;
-  readonly addHerdSubmitBtn: Locator;
-  readonly herdsSearchInput: Locator;
-  readonly herdsList: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -29,13 +22,6 @@ export class StaffFieldsMainPage extends BasePage {
     this.addFieldSubmitBtn = this.addFieldForm.locator("button[type='submit']");
     this.fieldsSearchInput = page.locator("#fieldsSearch");
     this.fieldsList = page.locator("#fieldsList");
-    this.openAddHerdModalBtn = page.locator("#openAddHerdModal");
-    this.addHerdForm = page.locator("#addHerdForm");
-    this.herdNameInput = page.locator("#herdName");
-    this.herdCountInput = page.locator("#herdCount");
-    this.addHerdSubmitBtn = this.addHerdForm.locator("button[type='submit']");
-    this.herdsSearchInput = page.locator("#herdsSearch");
-    this.herdsList = page.locator("#herdsList");
   }
 
   async openAddFieldModal() {
@@ -50,19 +36,5 @@ export class StaffFieldsMainPage extends BasePage {
 
   async searchField(fieldName: string) {
     await this.fieldsSearchInput.fill(fieldName);
-  }
-
-  async openAddHerdModal() {
-    await this.openAddHerdModalBtn.click();
-  }
-
-  async createHerd(herdName: string, herdCount: number) {
-    await this.herdNameInput.fill(herdName);
-    await this.herdCountInput.fill(String(herdCount));
-    await this.addHerdSubmitBtn.click();
-  }
-
-  async searchHerd(herdName: string) {
-    await this.herdsSearchInput.fill(herdName);
   }
 }
