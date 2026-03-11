@@ -5,7 +5,9 @@
       "command": "npx",
       "args": [
         "@playwright/mcp@latest"
-        //   ,"--headless"
+        , "--isolated"
+        , "--storage-state=playwright/.auth/session-user.json"
+        // , "--headless"
       ],
       "gallery": "https://api.mcp.github.com",
       "version": "0.0.1-seed"
