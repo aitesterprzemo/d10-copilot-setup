@@ -51,21 +51,5 @@ jobs:
         if: steps.cache-browsers.outputs.cache-hit == 'true'
         run: npx playwright install-deps chromium
 
-      - name: Wait for rolnopol service
-        run: |
-          if [ -z "$BASE_URL" ]; then
-            echo "BASE_URL is not set"
-            exit 1
-          fi
-          TARGET_URL="${BASE_URL%/}"
-          echo "Waiting for rolnopol service to be ready at ${TARGET_URL}..."
-          for i in {1..30}; do
-            if curl -sSf "${TARGET_URL}/health" || curl -sSf "${TARGET_URL}"; then
-              echo "Service is ready!"
-              exit 0
-            fi
-            echo "Attempt $i/30 failed, retrying in 2 seconds..."
-            sleep 2
-          done
-          echo "Service failed to become ready after 60 seconds"
-          exit 1
+      - name: Run Playwright tests
+        run: npm test
