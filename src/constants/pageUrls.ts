@@ -6,6 +6,7 @@ export const PAGE_URLS = {
   LOGIN: "/login.html",
   REGISTER: "/register.html",
   PROFILE: "/profile.html",
+  STAFF_FIELDS_MAIN: "/staff-fields-main.html",
   DOCS: "/docs.html",
   API_DOCS: "/swagger.html",
 } as const;
