@@ -13,6 +13,14 @@ export class StaffFieldsMainPage extends BasePage {
   readonly fieldsSearchInput: Locator;
   readonly fieldsList: Locator;
 
+  readonly openAddAnimalModalBtn: Locator;
+  readonly addAnimalForm: Locator;
+  readonly animalTypeSelect: Locator;
+  readonly animalAmountInput: Locator;
+  readonly addAnimalSubmitBtn: Locator;
+  readonly animalsSearchInput: Locator;
+  readonly animalsList: Locator;
+
   constructor(page: Page) {
     super(page);
     this.openAddFieldModalBtn = page.locator("#openAddFieldModal");
@@ -22,6 +30,14 @@ export class StaffFieldsMainPage extends BasePage {
     this.addFieldSubmitBtn = this.addFieldForm.locator("button[type='submit']");
     this.fieldsSearchInput = page.locator("#fieldsSearch");
     this.fieldsList = page.locator("#fieldsList");
+
+    this.openAddAnimalModalBtn = page.locator("#openAddAnimalModal");
+    this.addAnimalForm = page.locator("#addAnimalForm");
+    this.animalTypeSelect = page.locator("#animalType");
+    this.animalAmountInput = page.locator("#animalAmount");
+    this.addAnimalSubmitBtn = this.addAnimalForm.locator("button[type='submit']");
+    this.animalsSearchInput = page.locator("#animalsSearch");
+    this.animalsList = page.locator("#animalsList");
   }
 
   async openAddFieldModal() {
@@ -36,5 +52,19 @@ export class StaffFieldsMainPage extends BasePage {
 
   async searchField(fieldName: string) {
     await this.fieldsSearchInput.fill(fieldName);
+  }
+
+  async openAddAnimalModal() {
+    await this.openAddAnimalModalBtn.click();
+  }
+
+  async createAnimal(animalType: string, animalAmount: number) {
+    await this.animalTypeSelect.selectOption(animalType);
+    await this.animalAmountInput.fill(String(animalAmount));
+    await this.addAnimalSubmitBtn.click();
+  }
+
+  async searchAnimal(animalType: string) {
+    await this.animalsSearchInput.fill(animalType);
   }
 }
